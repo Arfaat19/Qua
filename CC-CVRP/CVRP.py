@@ -21,7 +21,7 @@ from ccp_input import ret_instance
 
 
 # colors = [ "#58FF33", "#CD6155", "#DAF7A6", "#FFC300", "#A569BD", "#5499C7", "#45B39D", "#6E2C00", "#FF33D1", "#FFFFFF", "#000000", "#33FFAF", "#33FFE0", "#FF3333"]
-
+print ("hi")
 ccp_output = open("./csv_files/ccp_output.csv",)
 
 input = json.load(ccp_output)
