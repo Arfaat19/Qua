@@ -22,7 +22,7 @@ from ccp_input import ret_instance
 
 # colors = [ "#58FF33", "#CD6155", "#DAF7A6", "#FFC300", "#A569BD", "#5499C7", "#45B39D", "#6E2C00", "#FF33D1", "#FFFFFF", "#000000", "#33FFAF", "#33FFE0", "#FF3333"]
 
-ccp_output = open("./csv_files/ccp_output.csv",)
+ccp_output = open("CC-CVRP\csv_files\ccp_output.csv",)
 
 input = json.load(ccp_output)
 
@@ -89,7 +89,7 @@ for r in range(p):
 
 
 def get_token():
-    dwave_token='DEV-4d3d428498a242dd663dc8cf916591c24ac1ef7e'
+    dwave_token='DEV-206e895fcd45e66ad6802ef108a574189f3389fc'
     return dwave_token   
 
 
@@ -135,7 +135,7 @@ for i in range(p):
 
 print(paths)
 
-with open('./csv_files/cluster_centroid_map.csv', 'w', newline='') as file:
+with open('CC-CVRP\csv_files\cluster_centroid_map.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     for cl in paths:
         writer.writerow(cl)

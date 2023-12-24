@@ -1,14 +1,14 @@
 import json
 import csv
 
-ccp_output = open("./csv_files/ccp_output.csv",)
+ccp_output = open("CC-CVRP\csv_files\ccp_output.csv",)
 
 input = json.load(ccp_output)
 
 # print(input)
 
 
-csv_filename = "./csv_files/cluster_centroid_map.csv"
+csv_filename = "CC-CVRP\csv_files\cluster_centroid_map.csv"
 with open(csv_filename) as f:
     reader = csv.reader(f)
     centroid_paths = list(line for line in reader)
@@ -24,7 +24,7 @@ for path in centroid_paths:
 
 print(cluster_nodes)
 
-with open('./csv_files/tsp_input.csv', 'w', newline='') as file:
+with open('CC-CVRP/csv_files/tsp_input.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     for cl in cluster_nodes:
         writer.writerow(cl)

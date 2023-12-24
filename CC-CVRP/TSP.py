@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 
 colors = [ "#58FF33", "#CD6155", "#DAF7A6", "#FFC300", "#A569BD", "#5499C7", "#45B39D", "#6E2C00", "#FF33D1", "#FFFFFF", "#000000", "#33FFAF", "#33FFE0", "#FF3333"]
 
-csv_filename = "./csv_files/tsp_input.csv"
+csv_filename = "CC-CVRP/csv_files/tsp_input.csv"
 with open(csv_filename) as f:
     reader = csv.reader(f)
     centroid_paths = list(line for line in reader)
@@ -143,7 +143,7 @@ def TSP(node_list):
     # print(t)
 
     def get_token():
-        api_token ='DEV-4d3d428498a242dd663dc8cf916591c24ac1ef7e'
+        api_token ='DEV-206e895fcd45e66ad6802ef108a574189f3389fc'
         return api_token   
 
 
