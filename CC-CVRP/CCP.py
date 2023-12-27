@@ -195,7 +195,7 @@ for i, op in enumerate(output.values()):
     op = {k: int(v) if isinstance(v, np.int32) else v for k, v in op.items()}
     ccp_output[i] = op
 
-out_file = open("CC-CVRP\csv_files\ccp_output.csv", "w")
+out_file = open("CC-CVRP/csv_files/ccp_output.csv", "w")
 
 json.dump(ccp_output, out_file, indent = 3)
   
