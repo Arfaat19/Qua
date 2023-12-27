@@ -8,6 +8,7 @@ from dwave.system import LeapHybridCQMSampler
 import time
 import csv
 import json
+import os
 
 import taichi as ti
 
@@ -16,7 +17,10 @@ from ccp_input import ret_instance
 
 # colors = [ "#58FF33", "#CD6155", "#DAF7A6", "#FFC300", "#A569BD", "#5499C7", "#45B39D", "#6E2C00", "#FF33D1", "#FFFFFF", "#000000", "#33FFAF", "#33FFE0", "#FF3333"]
 
-ccp_output = open("CC-CVRP\csv_files\ccp_output.csv",)
+csv_file_path = os.path.abspath("CC-CVRP/csv_files/ccp_output.csv")
+os.makedirs(os.path.dirname(csv_file_path), exist_ok=True)
+
+ccp_output = open(csv_file_path,)
 
 input = json.load(ccp_output)
 
@@ -91,7 +95,7 @@ def get_token():
 print("\nStarting D wave\n")
 startime=time.time()
 sampler=LeapHybridCQMSampler(token=get_token())
-sampleset = sampler.sample_cqm(cqm,time_limit=150 ,label='CVRP')
+sampleset = sampler.sample_cqm(cqm,time_limit=100 ,label='CVRP')
 feasible_sampleset=sampleset.filter(lambda row:row.is_feasible)
 end_time=time.time()
 try:
@@ -129,7 +133,10 @@ for i in range(p):
 
 print(paths)
 
-with open('CC-CVRP\csv_files\cluster_centroid_map.csv', 'w', newline='') as file:
+cluster_file_path = os.path.abspath("CC-CVRP/csv_files/cluster_centroid_map.csv")
+os.makedirs(os.path.dirname(cluster_file_path), exist_ok=True)
+
+with open(cluster_file_path, 'w', newline='') as file:
     writer = csv.writer(file)
     for cl in paths:
         writer.writerow(cl)

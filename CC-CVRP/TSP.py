@@ -6,16 +6,18 @@ from dwave.system import LeapHybridCQMSampler
 import time
 import vrplib as cvrplib
 import csv
-
+import os
 import networkx as nx
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 
 colors = [ "#58FF33", "#CD6155", "#DAF7A6", "#FFC300", "#A569BD", "#5499C7", "#45B39D", "#6E2C00", "#FF33D1", "#FFFFFF", "#000000", "#33FFAF", "#33FFE0", "#FF3333"]
 
-csv_filename = "CC-CVRP/csv_files/tsp_input.csv"
-with open(csv_filename) as f:
+tsp_file_path = os.path.abspath("CC-CVRP/csv_files/tsp_input.csv")
+os.makedirs(os.path.dirname(tsp_file_path), exist_ok=True)
+
+with open(tsp_file_path) as f:
     reader = csv.reader(f)
     centroid_paths = list(line for line in reader)
 node_list = [list(map(int, lst)) for lst in centroid_paths]
