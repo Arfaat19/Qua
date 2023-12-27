@@ -33,6 +33,14 @@ stages:
     steps:
     
     - checkout: self
+
+    # Create and activate a virtual environment
+    - script: |
+        python -m venv venv
+        source venv/bin/activate
+        python -m pip install -r CC-CVRP/requirements.txt
+      displayName: 'Install Dependencies and Activate Virtual Environment'
+
     - task: UsePythonVersion@0
       inputs:
         versionSpec: '3.11.6'
@@ -41,6 +49,5 @@ stages:
 
     - script: |
         cd CC-CVRP
-        python -m pip install -r requirements.txt 
         python CCP.py
       displayName: 'Run CCP.py'
