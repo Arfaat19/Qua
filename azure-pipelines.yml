@@ -7,23 +7,6 @@ pool:
 
 stages:
 
-- stage: InstallDependencies
-  displayName: 'Install Dependencies'
-  jobs:
-  - job: InstallDependenciesJob
-    displayName: 'Install Dependencies Job'
-    steps:
-    - checkout: self
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.11.6'  # Replace with your Python version
-        addToPath: true
-        
-    - script: |
-        cd CC-CVRP
-        python -m pip install -r requirements.txt
-      displayName: 'Install Dependencies'
-
 - stage: CC_CVRP_Stage
   displayName: 'CC-CVRP Stage'
   jobs:
@@ -31,6 +14,10 @@ stages:
     displayName: 'Run ccp_input.py'
     steps:
     - checkout: self
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.11.6'  # Replace with your Python version
+        addToPath: true
 
     - script: |
         cd CC-CVRP
@@ -46,8 +33,13 @@ stages:
     steps:
     
     - checkout: self
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.11.6'  # Replace with your Python version
+        addToPath: true
 
     - script: |
         cd CC-CVRP
+        python -m pip install -r requirements.txt 
         python CCP.py
       displayName: 'Run CCP.py'
