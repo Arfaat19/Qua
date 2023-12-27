@@ -34,6 +34,7 @@ stages:
 
     - script: |
         cd CC-CVRP
+        python -m pip install -r requirements.txt 
         python ccp_input.py
       displayName: 'Run ccp_input.py'
 
