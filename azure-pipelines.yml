@@ -45,7 +45,6 @@ stages:
         python -m pip install vrplib==1.3.0  
         python -m pip install numpy==1.26.1
         python -m pip install scikit_fuzzy==0.4.2
-        # python -m pip install -r requirements.txt
         python CCP.py
       displayName: 'Run CCP.py'
       # env:
