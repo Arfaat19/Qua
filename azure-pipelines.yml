@@ -2,14 +2,14 @@ trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 
 stages:
 
 # - stage: CC_CVRP_Stage
 #   displayName: 'CC-CVRP Stage'
-  # jobs:
+#   jobs:
 #   - job: RunCCPInput
 #     displayName: 'Run ccp_input.py'
 #     steps:
@@ -41,8 +41,6 @@ stages:
         architecture: 'x64'
 
     - script: |
-        python -m venv venv
-        source venv/bin/activate        
         cd CC-CVRP
         python -m pip install -r requirements.txt
         python CCP.py
