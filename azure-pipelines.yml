@@ -1,28 +1,29 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
   - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
+
 
 stages:
-- stage: CC_CVRP_Stage
-  displayName: 'CC-CVRP Stage'
-  jobs:
-  - job: RunCCPInput
-    displayName: 'Run ccp_input.py'
-    steps:
-    - checkout: self
 
-    - script: |
-        cd CC-CVRP
-        python -m pip install -r requirements.txt
-        python ccp_input.py
-      displayName: 'Run ccp_input.py'
+# - stage: CC_CVRP_Stage
+#   displayName: 'CC-CVRP Stage'
+#   jobs:
+#   - job: RunCCPInput
+#     displayName: 'Run ccp_input.py'
+#     steps:
+#     - checkout: self
+#     - task: UsePythonVersion@0
+#       inputs:
+#         versionSpec: '3.11.6'  # Replace with your Python version
+#         addToPath: true
+
+#     - script: |
+#         cd CC-CVRP
+#         python -m pip install -r requirements.txt 
+#         python ccp_input.py
+#       displayName: 'Run ccp_input.py'
 
 - stage: RunCCP
   displayName: 'Run CCP.py Stage'
@@ -30,10 +31,19 @@ stages:
   - job: RunCCPFile
     displayName: 'Run CCP.py'
     steps:
+    
     - checkout: self
+
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.11.6'
+        addToPath: true
+        architecture: 'x64'
 
     - script: |
         cd CC-CVRP
         python -m pip install -r requirements.txt
         python CCP.py
       displayName: 'Run CCP.py'
+      env:
+        PYTHON_VERSION: '3.11.6'
