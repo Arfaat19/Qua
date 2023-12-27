@@ -1,6 +1,6 @@
 import csv
 
-csv_filename = './csv_files/tsp_input.csv'
+csv_filename = 'CC-CVRP/csv_files/tsp_input.csv'
 
 with open(csv_filename) as f:
     reader = csv.reader(f)

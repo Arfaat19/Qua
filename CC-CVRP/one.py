@@ -7,11 +7,11 @@ import TSP
 import csv
 
 #* Sequence of Execution
-#?      CCP --> ccp_output.csv
-#?      CVRP --> cluster_centroid_map.csv
-#?      tsp_input --> tsp_input.csv
-#?      run_tsp
-#?      TSP --> graph.png
+#?     Random Clustering:          CCP --> ccp_output.csv
+#?     Finding Efficient Clusters: CVRP --> cluster_centroid_map.csv
+#?     Input paths for TSP:        tsp_input --> tsp_input.csv
+#?     Print TSP paths:            run_tsp
+#?     Map out the paths:          TSP --> graph.png
 
 
 # A-n32-k5 
