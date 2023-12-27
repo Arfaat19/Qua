@@ -4,31 +4,10 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  PYPI_CACHE: $(Pipeline.Workspace)/.pypi
-
 stages:
 - stage: CC_CVRP_Stage
   displayName: 'CC-CVRP Stage'
   jobs:
-  - job: InstallDependencies
-    displayName: 'Install Dependencies'
-    steps:
-    - checkout: self
-
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.x'
-        addToPath: true
-
-    - script: |
-        cd CC-CVRP
-        python -m pip install --upgrade pip
-        pip install --upgrade wheel
-        python -m pip install --upgrade pip setuptools
-        pip install --cache-dir $(PYPI_CACHE) -r requirements.txt
-      displayName: 'Install Python Dependencies'
-
   - job: RunCCPInput
     displayName: 'Run ccp_input.py'
     steps:
@@ -36,5 +15,20 @@ stages:
 
     - script: |
         cd CC-CVRP
+        python -m pip install -r requirements.txt 
         python ccp_input.py
       displayName: 'Run ccp_input.py'
+
+- stage: RunCCP
+  displayName: 'Run CCP.py Stage'
+  jobs:
+  - job: RunCCPFile
+    displayName: 'Run CCP.py'
+    steps:
+    - checkout: self
+
+    - script: |
+        cd CC-CVRP
+        python -m pip install -r requirements.txt 
+        python CCP.py
+      displayName: 'Run CCP.py'
