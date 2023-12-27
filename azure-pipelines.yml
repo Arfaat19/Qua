@@ -7,23 +7,23 @@ pool:
 
 stages:
 
-- stage: CC_CVRP_Stage
-  displayName: 'CC-CVRP Stage'
-  jobs:
-  - job: RunCCPInput
-    displayName: 'Run ccp_input.py'
-    steps:
-    - checkout: self
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.11.6'  # Replace with your Python version
-        addToPath: true
+# - stage: CC_CVRP_Stage
+#   displayName: 'CC-CVRP Stage'
+#   jobs:
+#   - job: RunCCPInput
+#     displayName: 'Run ccp_input.py'
+#     steps:
+#     - checkout: self
+#     # - task: UsePythonVersion@0
+#     #   inputs:
+#     #     versionSpec: '3.11.6'  # Replace with your Python version
+#     #     addToPath: true
 
-    - script: |
-        cd CC-CVRP
-        python -m pip install -r requirements.txt 
-        python ccp_input.py
-      displayName: 'Run ccp_input.py'
+#     - script: |
+#         cd CC-CVRP
+#         python -m pip install -r requirements.txt 
+#         python ccp_input.py
+#       displayName: 'Run ccp_input.py'
 
 - stage: RunCCP
   displayName: 'Run CCP.py Stage'
@@ -34,16 +34,16 @@ stages:
     
     - checkout: self
 
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.11.6'
-        addToPath: true
-        architecture: 'x64'
+    # - task: UsePythonVersion@0
+    #   inputs:
+    #     versionSpec: '3.11.6'
+    #     addToPath: true
+    #     architecture: 'x64'
 
     - script: |
         cd CC-CVRP
         python -m pip install -r requirements.txt
         python CCP.py
       displayName: 'Run CCP.py'
-      env:
-        PYTHON_VERSION: '3.11.6'
+      # env:
+      #   PYTHON_VERSION: '3.11.6'
