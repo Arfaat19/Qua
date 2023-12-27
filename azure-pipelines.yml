@@ -8,7 +8,7 @@ pool:
 stages:
 
 - stage: CC_CVRP_Stage
-  displayName: 'CC-CVRP Stage'
+  displayName: 'ccp_input'
   jobs:
   - job: RunCCPInput
     displayName: 'Run ccp_input.py'
@@ -26,7 +26,7 @@ stages:
       displayName: 'Run ccp_input.py'
 
 - stage: RunCCP
-  displayName: 'Run CCP.py Stage'
+  displayName: 'CCP'
   jobs:
   - job: RunCCPFile
     displayName: 'Run CCP.py'
