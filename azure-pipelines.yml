@@ -20,6 +20,7 @@ stages:
 
     - script: |
         cd CC-CVRP
+        python -m pip install -r requirements.txt
         python 1.ccp_input.py
       displayName: 'Run ccp_input.py'
 
@@ -33,5 +34,6 @@ stages:
 
     - script: |
         cd CC-CVRP
+        python -m pip install -r requirements.txt
         python 2.CCP.py
       displayName: 'Run CCP.py'
