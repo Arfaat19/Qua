@@ -2,17 +2,13 @@ import numpy as np
 from dimod import ConstrainedQuadraticModel, Binary, Integer
 from dimod import quicksum
 from dwave.system import LeapHybridCQMSampler
-from itertools import chain, combinations
 
 import time
-import random
 import vrplib as cvrplib
 import csv
-import os
-import json
 
 import networkx as nx
-import matplotlib.pyplot as plt
+import matplotlib as plt
 
 
 
@@ -33,18 +29,18 @@ node_list = [list(map(int, lst)) for lst in centroid_paths]
 # # Convert the padded_node_list to a NumPy array
 # node_list = np.array(padded_node_list)
 
-instance=cvrplib.download_instance("A-n80-k10", "A-n80-k10.vrp")
-instance = cvrplib.read_instance("A-n80-k10.vrp")
-solution=cvrplib.download_solution("A-n80-k10", "A-n80-k10.sol")
-solution = cvrplib.read_solution("A-n80-k10.sol")
+instance=cvrplib.download_instance("A-n32-k5", "A-n32-k5.vrp")
+instance = cvrplib.read_instance("A-n32-k5.vrp")
+solution=cvrplib.download_solution("A-n32-k5", "A-n32-k5.sol")
+solution = cvrplib.read_solution("A-n32-k5.sol")
 
 def TSP(node_list):
 
     # ! You have to read the instance, solution within the TSP() function again, else it will get modified
-    instance=cvrplib.download_instance("A-n80-k10", "A-n80-k10.vrp")
-    instance = cvrplib.read_instance("A-n80-k10.vrp")
-    solution=cvrplib.download_solution("A-n80-k10", "A-n80-k10.sol")
-    solution = cvrplib.read_solution("A-n80-k10.sol")
+    instance=cvrplib.download_instance("A-n32-k5", "A-n32-k5.vrp")
+    instance = cvrplib.read_instance("A-n32-k5.vrp")
+    solution=cvrplib.download_solution("A-n32-k5", "A-n32-k5.sol")
+    solution = cvrplib.read_solution("A-n32-k5.sol")
 
     n=len(node_list)
 

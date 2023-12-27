@@ -1,19 +1,13 @@
 import numpy as np
-import dimod
+import vrplib as cvrplib
+
 from dimod import ConstrainedQuadraticModel, Binary, Integer
 from dimod import quicksum
 from dwave.system import LeapHybridCQMSampler
-from itertools import chain, combinations
 
 import time
-import random
-import vrplib as cvrplib
 import csv
 import json
-import os
-
-import networkx as nx
-import matplotlib.pyplot as plt
 
 import taichi as ti
 
@@ -27,8 +21,8 @@ ccp_output = open("CC-CVRP\csv_files\ccp_output.csv",)
 input = json.load(ccp_output)
 
 
-instance=cvrplib.download_instance("A-n80-k10", "A-n80-k10.vrp")
-d_instance = cvrplib.read_instance("A-n80-k10.vrp")
+instance=cvrplib.download_instance("A-n32-k5", "A-n32-k5.vrp")
+d_instance = cvrplib.read_instance("A-n32-k5.vrp")
 
 instance = ret_instance(input, d_instance)
 

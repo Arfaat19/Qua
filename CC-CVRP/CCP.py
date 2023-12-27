@@ -1,16 +1,14 @@
 import json
-import os
 
 import numpy as np
 import math
-import matplotlib.pyplot as plt
 import vrplib as cvrplib
 
 import skfuzzy as fuzz
 # import taichi as ti
 
-instance=cvrplib.download_instance("A-n80-k10", "A-n80-k10.vrp")
-instance = cvrplib.read_instance("A-n80-k10.vrp")
+instance=cvrplib.download_instance("A-n32-k5", "A-n32-k5.vrp")
+instance = cvrplib.read_instance("A-n32-k5.vrp")
 
 
 # 1. CALCULATE DISTANCES

@@ -1,5 +1,4 @@
 import math
-import vrplib as cvrplib
 import taichi as ti
 
 # Initialize Taichi
