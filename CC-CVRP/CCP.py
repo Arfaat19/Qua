@@ -195,7 +195,7 @@ for i, op in enumerate(output.values()):
     op = {k: int(v) if isinstance(v, np.int32) else v for k, v in op.items()}
     ccp_output[i] = op
 
-csv_file_path = os.path.abspath("CC-CVRP/ccp_output.csv")
+csv_file_path = os.path.abspath("CC-CVRP/csv_files/ccp_output.csv")
 os.makedirs(os.path.dirname(csv_file_path), exist_ok=True)
 # out_file = open("CC-CVRP/ccp_output.csv", "w")
 
