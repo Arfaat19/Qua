@@ -195,11 +195,14 @@ for i, op in enumerate(output.values()):
     op = {k: int(v) if isinstance(v, np.int32) else v for k, v in op.items()}
     ccp_output[i] = op
 
-csv_file_path = "CC-CVRP/csv_files/ccp_output.csv"
-out_file = open(csv_file_path, "w")
-
+csv_file_path = os.path.abspath("CC-CVRP/ccp_output.csv")
 os.makedirs(os.path.dirname(csv_file_path), exist_ok=True)
+# out_file = open("CC-CVRP/ccp_output.csv", "w")
 
-json.dump(ccp_output, out_file, indent = 3)
+# json.dump(ccp_output, out_file, indent = 3)
   
-out_file.close()
+# out_file.close()
+
+with open(csv_file_path, "w") as out_file:
+    json.dump(ccp_output, out_file, indent = 3)
+    pass
