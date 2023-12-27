@@ -20,7 +20,7 @@ stages:
 
     - script: |
         cd CC-CVRP
-        python 1. ccp_input.py
+        python 1.ccp_input.py
       displayName: 'Run ccp_input.py'
 
 - stage: RunCCP
@@ -33,5 +33,5 @@ stages:
 
     - script: |
         cd CC-CVRP
-        python CCP.py
+        python 2.CCP.py
       displayName: 'Run CCP.py'
