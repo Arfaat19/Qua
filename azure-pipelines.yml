@@ -4,16 +4,34 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
+  - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: CC_CVRP_Stage
+  displayName: 'CC-CVRP Stage'
+  jobs:
+  - job: RunCCPInput
+    displayName: 'Run ccp_input.py'
+    steps:
+    - checkout: self
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    - script: |
+        cd CC-CVRP
+        python 1. ccp_input.py
+      displayName: 'Run ccp_input.py'
+
+- stage: RunCCP
+  displayName: 'Run CCP.py Stage'
+  jobs:
+  - job: RunCCPFile
+    displayName: 'Run CCP.py'
+    steps:
+    - checkout: self
+
+    - script: |
+        cd CC-CVRP
+        python CCP.py
+      displayName: 'Run CCP.py'
